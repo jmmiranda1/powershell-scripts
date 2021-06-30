@@ -1,4 +1,4 @@
-#Invoke an inline command on the remote machine to its log serial number to a txt file.
+#Invoke an inline command on the remote machine to log its serial number to a txt file.
 
 #WinRM credentials
 $Credential = Get-Credential
