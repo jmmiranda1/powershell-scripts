@@ -1,6 +1,6 @@
 #This script will get a list of all IIS Bindings in Powershell
 
-# credentials for Prod.local servers.
+# credentials for servers.
 $serverCredential = Get-Credential -Message "Enter your credentials for Prod.local"
 
 # credentials for Azure
@@ -76,12 +76,12 @@ $FQDNServerList = @()
 # Attach the appropriate domain name to the severs based on it's name
 
 foreach ($server in $servers) {
-    if ($server.Name -match "USE2QA") {
-        $serverName = $server.Name + ".qadev.local"
+    if ($server.Name -match "SomeName") {
+        $serverName = $server.Name + ".SomeDomain"
         $FQDNServerList = $FQDNServerList + $serverName
     }
     else {
-        $serverName = $server.Name + ".prod.local"
+        $serverName = $server.Name + ".AnotherDomain"
         $FQDNServerList = $FQDNServerList + $serverName
     }    
 }
@@ -105,7 +105,7 @@ foreach ($FQDNServer in $FQDNServerList) {
 foreach ($IISserver in $IISservers) {
     $result = @()
     write-host "Scanning "$IISserver
-    if ($IISserver -match "qadev.local") {
+    if ($IISserver -match "SomeDomain") {
         $result = Invoke-Command -ComputerName $IISserver -ScriptBlock $scriptBlock
         $finalResult = $finalResult + $result
     }
