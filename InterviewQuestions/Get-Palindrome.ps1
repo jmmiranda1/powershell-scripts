@@ -13,3 +13,7 @@ function Get-Palindrome {
 
     $Word -eq $x
 }
+
+Get-Palindrome -Word "Lindsay"
+
+Get-Palindrome -Word "Level"
