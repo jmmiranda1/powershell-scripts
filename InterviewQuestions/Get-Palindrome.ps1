@@ -1,19 +1,19 @@
-# Write a function that checks if a string is a palindrome
-
+# Write a function that checks if a string is a palindrome or not.
 function Get-Palindrome {
     param (
-        $Word
+        [string]$Word
     )
-    
     $w = $Word.ToCharArray()
     [array]::Reverse($w)
-    $x = -join($w)
+    $x = -join ($w)
 
-    "$Word reversed is $x"
-
-    $Word -eq $x
+    if ($Word -eq $x) {
+        Write-Host "The word $Word is a palindrome! Reversed is $x"
+    }
+    else {
+        Write-Host "The word $Word is not a palindrome. Its reverse is $x"
+    }
 }
 
-Get-Palindrome -Word "Lindsay"
-
-Get-Palindrome -Word "Level"
+$Word = Read-Host "Enter a word: "
+Get-Palindrome -Word $Word
